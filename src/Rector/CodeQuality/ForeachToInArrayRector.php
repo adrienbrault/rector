@@ -13,9 +13,15 @@ use PhpParser\Node\Stmt\Return_;
 use Rector\Rector\AbstractRector;
 use Rector\RectorDefinition\CodeSample;
 use Rector\RectorDefinition\RectorDefinition;
+use Rector\Node\NodeFactory;
 
 final class ForeachToInArrayRector extends AbstractRector
 {
+    public function __construct(NodeFactory $nodeFactory)
+    {
+        $this->nodeFactory = $nodeFactory;
+    }
+
     public function getDefinition(): RectorDefinition
     {
         return new RectorDefinition(
@@ -76,9 +82,10 @@ final class ForeachToInArrayRector extends AbstractRector
             return $foreach;
         }
 
-        $inArrayFunctionCall = new FuncCall('in_array', [
-            $leftVariable,
-            $foreach->expr
+        $inArrayFunctionCall = new FuncCall(new Name('in_array'), [
+            $rightVariable,
+            $foreach->expr,
+            $this->nodeFactory->createTrueConstant(),
         ]);
 
         return new Return_($inArrayFunctionCall);
