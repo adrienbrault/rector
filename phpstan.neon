@@ -44,6 +44,7 @@ parameters:
         - '#Access to an undefined property PhpParser\\Node::\$(args|var)#'
         - '#Method Rector\\Php\\Rector\\TryCatch\\MultiExceptionCatchRector\:\:collectCatchKeysByContent\(\) should return array<array<int\>\> but returns array<string, array<int, int\|string\>\>#'
         - '#Parameter \#1 \$node of method Rector\\NodeAnalyzer\\CallAnalyzer::(isName|isNames)\(\) expects PhpParser\\Node\\Expr\\FuncCall\|PhpParser\\Node\\Expr\\MethodCall\|PhpParser\\Node\\Expr\\StaticCall, PhpParser\\(Node|Node\\Expr) given#'
+        - '#In method "Rector\\Rector\\AbstractRector::getTypes", return type is "array". Please provide a @param annotation to further specify the type of the array. For instance: @return int\[\]#'
 
         # irelevant
         - '#Call to function in_array\(\) with arguments string, array<array<string\|false>> and true will always evaluate to false#'
